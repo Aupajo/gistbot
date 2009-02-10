@@ -29,14 +29,17 @@ config do |c|
   c.port    = 6667
 end
 
-on :connect do
-  join "#gist"
-end
-
 on :channel, /^\!gist (.*)/ do
   msg channel, Gist.write(match[1])
 end
 
-on :private, /.*/ do
-  msg nick, Gist.write(match[1])
+on :private, /\!invite (.*)/ do
+  channel_to_join = "##{match[1]}" unless match[1][0] == "#"
+  msg nick, "Aye-aye! Deploying to #{channel_to_join}."
+  join channel_to_join
 end
+
+on :private, /.*/ do
+  msg nick, Gist.write(message, :private)
+end
+
