@@ -90,11 +90,11 @@ helpers do
 end
 
 on :channel, /^\!gist log (\d+)/ do
-  msg channel, Gist.write(log_lines(channel, match[1]))
+  msg channel, "Chat log gist created! " + Gist.write(log_lines(channel, match[1]))
 end
 
 on :channel, /^\!gist (.*)/ do
-  msg channel, Gist.write(match[1])
+  msg channel, "Gist created! " + Gist.write(match[1])
 end
 
 on :channel, /.*/ do
