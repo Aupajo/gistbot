@@ -43,3 +43,8 @@ To add a gist when GistBot is in your channel, you can use `!gist`:
 
     !gist Hey this is going to be turned into a gist
 
+
+Licence
+-------
+
+Licensed under Beerware :)
