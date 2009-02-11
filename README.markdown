@@ -14,7 +14,7 @@ Just alter the config block:
 
 and run:
 
-  ruby gistbot.rb
+    ruby gistbot.rb
 
 Usage
 -----
