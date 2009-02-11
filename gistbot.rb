@@ -29,14 +29,26 @@ config do |c|
   c.port    = 6667
 end
 
+helpers do
+  def channel_name_for(room)
+    room[0,1] == "#" ? room : "##{room}"
+  end
+end
+
 on :channel, /^\!gist (.*)/ do
   msg channel, Gist.write(match[1])
 end
 
-on :private, /\!invite (.*)/ do
-  channel_to_join = "##{match[1]}" unless match[1][0] == "#"
-  msg nick, "Aye-aye! Deploying to #{channel_to_join}."
-  join channel_to_join
+on :private, /^\!invite (.*)/ do
+  channel_name = channel_name_for(match[1])
+  msg nick, "Aye-aye! Deploying to #{channel_name}."
+  join channel_name
+end
+
+on :private, /^\!leave (.*)/ do
+  channel_name = '#' + match[1] unless match[1][0,1] == "#"
+  msg nick, "Roger that. Leaving #{channel_name}."
+  part channel_name
 end
 
 on :private, /.*/ do
