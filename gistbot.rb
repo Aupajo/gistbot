@@ -2,14 +2,16 @@ require 'rubygems'
 require 'isaac'
 require 'open-uri'
 require 'net/http'
- 
+
 module Gist
   extend self
  
   def write(content, private_gist = false)
     url = URI.parse('http://gist.github.com/gists')
     req = Net::HTTP.post_form(url, data(nil, nil, content, private_gist))
-    req['Location']
+    loc = req['Location']
+    puts "Gist created at: #{loc}"
+    loc
   end
  
   private
@@ -41,13 +43,15 @@ end
 
 on :private, /^\!invite (.*)/ do
   channel_name = channel_name_for(match[1])
-  msg nick, "Aye-aye! Deploying to #{channel_name}."
+  msg nick, "Aye-aye! Deploying to #{channel_name}"
+  puts "Joining #{channel_name}"
   join channel_name
 end
 
 on :private, /^\!leave (.*)/ do
   channel_name = '#' + match[1] unless match[1][0,1] == "#"
-  msg nick, "Roger that. Leaving #{channel_name}."
+  msg nick, "Roger that. Leaving #{channel_name}"
+  puts "Leaving #{channel_name}"
   part channel_name
 end
 
