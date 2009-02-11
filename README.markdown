@@ -43,6 +43,9 @@ To add a gist when GistBot is in your channel, you can use `!gist`:
 
     !gist Hey this is going to be turned into a gist
 
+To log the last few lines of chat into a gist:
+
+    !gist log 10 # This logs the last 10 lines of the chat into a gist
 
 Licence
 -------
