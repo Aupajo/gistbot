@@ -75,7 +75,7 @@ end
 
 helpers do
   def channel_name_for(room)
-    room[0,1] == "#" ? room : "##{room}"
+    room[0,1] == "#" ? room : "#" + room
   end
   
   def log(channel, nick, msg)
