@@ -12,6 +12,10 @@ Just alter the config block:
       c.port    = 6667
     end
 
+make sure you have the isaac gem:
+
+    sudo gem install iichverstehe-isaac --source http://gems.github.com
+
 and run:
 
     ruby gistbot.rb
