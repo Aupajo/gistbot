@@ -12,7 +12,7 @@ Just alter the config block:
       c.port    = 6667
     end
 
-make sure you have the isaac gem:
+make sure you have the [isaac gem](http://github.com/ichverstehe/isaac/tree/master):
 
     sudo gem install iichverstehe-isaac --source http://gems.github.com
 
