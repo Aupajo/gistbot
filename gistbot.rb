@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'isaac'
 require 'open-uri'
 require 'net/http'
@@ -67,7 +66,7 @@ class MessageLog
   end
 end
 
-config do |c|
+configure do |c|
   c.nick    = "GistBot"
   c.server  = "irc.freenode.net"
   c.port    = 6667

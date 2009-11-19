@@ -6,7 +6,7 @@ Setup
 
 Just alter the config block:
 
-    config do |c|
+    configure do |c|
       c.nick    = "GistBot"
       c.server  = "irc.freenode.net"
       c.port    = 6667
@@ -14,7 +14,7 @@ Just alter the config block:
 
 make sure you have the [isaac gem](http://github.com/ichverstehe/isaac/tree/master):
 
-    sudo gem install iichverstehe-isaac --source http://gems.github.com
+    sudo gem install iichverstehe-isaac --source http://gemcutter.org
 
 and run:
 
