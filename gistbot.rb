@@ -68,17 +68,13 @@ class MessageLog
 end
 
 
+configuration = YAML.load_file(File.dirname(__FILE__) + '/config.yml')
+
 configure do |c|
-  config = YAML.load_file(File.dirname(__FILE__) + '/config.yml')
-  config.each {|k,v| c.send("#{k}=", v) }
+  configuration.each {|k,v| c.send("#{k}=", v) }
 end
 
-
 helpers do
-  def channel_name_for(room)
-    room[0,1] == "#" ? room : "#" + room
-  end
-  
   def log(channel, nick, msg)
     log = MessageLog.find_or_create_for_channel(channel)
     log.add(nick, msg)
@@ -88,6 +84,13 @@ helpers do
     log = MessageLog.find(channel)
     log.read(num.to_i)
   end
+end
+
+
+on :connect do
+  puts "#{configuration['nick']} connected to #{configuration['server']} (port #{configuration['port']}).\n\n"
+  puts "To invite #{configuration['nick']} to your channel, use:"
+  puts "/msg #{configuration['nick']} !invite #channel-name\n\n"
 end
 
 on :channel, /^\!gist log (\d+)/ do
@@ -102,15 +105,13 @@ on :channel, /.*/ do
   log channel, nick, message 
 end
 
-on :private, /^\!invite (.*)/ do
-  channel_name = channel_name_for(match[1])
+on :private, /^\!invite (.*)/ do |channel_name|
   msg nick, "Aye-aye! Deploying to #{channel_name}"
   puts "Joining #{channel_name}"
   join channel_name
 end
 
-on :private, /^\!leave (.*)/ do
-  channel_name = '#' + match[1] unless match[1][0,1] == "#"
+on :private, /^\!leave (.*)/ do |channel_name|
   msg nick, "Roger that. Leaving #{channel_name}"
   puts "Leaving #{channel_name}"
   part channel_name
