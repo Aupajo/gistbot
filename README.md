@@ -12,7 +12,7 @@ Just alter `config.yml`:
 
 make sure you have the [isaac gem](http://github.com/ichverstehe/isaac):
 
-    sudo gem install iichverstehe-isaac --source http://gemcutter.org
+    sudo gem install isaac --source http://gemcutter.org
 
 and run:
 
