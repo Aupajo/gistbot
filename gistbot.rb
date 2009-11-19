@@ -1,4 +1,5 @@
 require 'isaac'
+require 'yaml'
 require 'open-uri'
 require 'net/http'
 
@@ -66,11 +67,12 @@ class MessageLog
   end
 end
 
+
 configure do |c|
-  c.nick    = "GistBot"
-  c.server  = "irc.freenode.net"
-  c.port    = 6667
+  config = YAML.load_file(File.dirname(__FILE__) + '/config.yml')
+  config.each {|k,v| c.send("#{k}=", v) }
 end
+
 
 helpers do
   def channel_name_for(room)

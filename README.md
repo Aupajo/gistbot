@@ -4,15 +4,13 @@ GistBot
 Setup
 -----
 
-Just alter the config block:
+Just alter `config.yml`:
+  
+  nick: GistBot
+  server: irc.freenode.net
+  port: 6667
 
-    configure do |c|
-      c.nick    = "GistBot"
-      c.server  = "irc.freenode.net"
-      c.port    = 6667
-    end
-
-make sure you have the [isaac gem](http://github.com/ichverstehe/isaac/tree/master):
+make sure you have the [isaac gem](http://github.com/ichverstehe/isaac):
 
     sudo gem install iichverstehe-isaac --source http://gemcutter.org
 
