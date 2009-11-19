@@ -27,7 +27,7 @@ Any private messages sent to GistBot will be created as private gists.
 
     /msg GistBot turn me into a private gist please!
 
-While in a private messaging session, if you want to invite GistBot to a room, you can use `!invite` like this:
+While in a private messaging session, if you want to invite GistBot to a channel, you can use `!invite` like this:
 
     !invite #gist
 
@@ -48,4 +48,4 @@ To log the last few lines of chat into a gist:
 Licence
 -------
 
-Licensed under Beerware :)
+If you use it, and you like it, and you feel inclined, and you know me in person, buy me a beer sometime.
