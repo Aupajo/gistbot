@@ -6,9 +6,9 @@ Setup
 
 Just alter `config.yml`:
   
-  nick: GistBot
-  server: irc.freenode.net
-  port: 6667
+    nick: GistBot
+    server: irc.freenode.net
+    port: 6667
 
 make sure you have the [isaac gem](http://github.com/ichverstehe/isaac):
 
